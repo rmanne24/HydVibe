@@ -1,13 +1,74 @@
-import type { VenueWithLiveStatus, VibeCategory, Area, CrowdLevel, SearchQueryAnalysis } from '../types';
+import type { VenueWithLiveStatus, VibeCategory, MoodCategory, Area, CrowdLevel, SearchQueryAnalysis } from '../types';
 
 export const EXAMPLE_PROMPTS = [
-  "Quiet café in Jubilee Hills with fast Wi-Fi for 3 hours of deep work",
-  "Aesthetic date spot in Banjara Hills with outdoor garden seating",
-  "Where is not too crowded right now for a quick coffee meeting?",
-  "Work-friendly place near HITEC City with power sockets and specialty beans",
-  "Budget-friendly spot with a lively social vibe and great desserts",
-  "Pet-friendly outdoor café in Jubilee Hills for Sunday morning brunch",
+  "Quiet café for deep work",
+  "Aesthetic date spot under ₹800",
+  "Find somewhere less crowded",
+  "Specialty pour-overs in Jubilee Hills",
+  "Breezy garden brunch with pets",
+  "Tech roastery near HITEC City with high-speed Wi-Fi",
 ];
+
+export const MOOD_CONFIG: Record<
+  MoodCategory,
+  {
+    label: string;
+    description: string;
+    vibes: VibeCategory[];
+    searchQuery: string;
+    icon: string;
+  }
+> = {
+  'Deep Work': {
+    label: 'Deep Work',
+    description: 'High-speed fiber Wi-Fi & booth charging sockets',
+    vibes: ['Work-friendly', 'Quiet'],
+    searchQuery: 'Quiet café with high-speed Wi-Fi and power sockets for deep work',
+    icon: 'Laptop',
+  },
+  'Coffee Date': {
+    label: 'Coffee Date',
+    description: 'Intimate seating, delicate pastries & warm lighting',
+    vibes: ['Date', 'Aesthetic', 'Specialty Coffee'],
+    searchQuery: 'Aesthetic intimate date spot with artisan desserts',
+    icon: 'Heart',
+  },
+  'Social Hangout': {
+    label: 'Social Hangout',
+    description: 'Spacious multi-tiered seating & lively conversations',
+    vibes: ['Social', 'Outdoor'],
+    searchQuery: 'Lively café for social gathering and group brunch',
+    icon: 'Users',
+  },
+  'Solo Reset': {
+    label: 'Solo Reset',
+    description: 'Tranquil shade beneath ancient trees & book nooks',
+    vibes: ['Quiet', 'Outdoor', 'Aesthetic'],
+    searchQuery: 'Peaceful garden sanctuary for book reading and solo reset',
+    icon: 'Sparkles',
+  },
+  'Study Session': {
+    label: 'Study Session',
+    description: 'Ergonomic study pods & uninterrupted single-origins',
+    vibes: ['Work-friendly', 'Quiet'],
+    searchQuery: 'Quiet study session café with reliable power and coffee',
+    icon: 'BookOpen',
+  },
+  'Budget Friendly': {
+    label: 'Budget Friendly',
+    description: 'Satisfying coffee & hearty portions under ₹800',
+    vibes: ['Budget'],
+    searchQuery: 'Pocket-friendly café under 800 for two with great vibe',
+    icon: 'Wallet',
+  },
+  'Aesthetic Spots': {
+    label: 'Aesthetic Spots',
+    description: 'Architectural terracotta, sunlit atriums & boutique flora',
+    vibes: ['Aesthetic', 'Outdoor'],
+    searchQuery: 'Aesthetic photogenic café with stunning design and courtyards',
+    icon: 'Compass',
+  },
+};
 
 export function parseNaturalLanguageQuery(query: string): SearchQueryAnalysis {
   const normalized = query.toLowerCase().trim();
@@ -43,6 +104,12 @@ export function parseNaturalLanguageQuery(query: string): SearchQueryAnalysis {
   if (/quiet|peaceful|silent|calm|read|reading|book|study|serene|uninterrupted/.test(normalized)) {
     detectedVibes.add('Quiet');
   }
+  if (/deep\s*work/.test(normalized)) {
+    detectedVibes.add('Work-friendly');
+    detectedVibes.add('Quiet');
+    analysis.requiresWifi = true;
+    analysis.requiresSockets = true;
+  }
   if (/aesthetic|pretty|interior|design|beautiful|cozy|photogenic|instagram|decor/.test(normalized)) {
     detectedVibes.add('Aesthetic');
   }
@@ -77,7 +144,7 @@ export function parseNaturalLanguageQuery(query: string): SearchQueryAnalysis {
   if (/pet|dog/.test(normalized)) analysis.requiresPetFriendly = true;
 
   // Crowd preference
-  if (/not (too )?crowded|empty|chill|low crowd|quiet right now|open tables|peace/.test(normalized)) {
+  if (/not (too )?crowded|empty|chill|low crowd|less crowd|less crowded|somewhere less|quiet right now|open tables|peace/.test(normalized)) {
     analysis.preferredCrowd = ['empty', 'comfortable'];
   } else if (/buzzing|lively|happening|energetic/.test(normalized)) {
     analysis.preferredCrowd = ['comfortable', 'busy'];

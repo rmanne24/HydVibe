@@ -11,6 +11,15 @@ export type VibeCategory =
   | 'Pet-friendly'
   | 'Outdoor';
 
+export type MoodCategory = 
+  | 'Deep Work' 
+  | 'Coffee Date' 
+  | 'Social Hangout' 
+  | 'Solo Reset' 
+  | 'Study Session' 
+  | 'Budget Friendly' 
+  | 'Aesthetic Spots';
+
 export type Area = 
   | 'Jubilee Hills' 
   | 'Banjara Hills' 

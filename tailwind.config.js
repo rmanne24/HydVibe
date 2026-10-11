@@ -32,10 +32,10 @@ export default {
           border: '#D2DDC8',
         },
         charcoal: {
-          DEFAULT: '#1F2421',
-          light: '#3A423D',
-          muted: '#667069',
-          faint: '#8F9992',
+          DEFAULT: '#191D19',
+          light: '#2D322E',
+          muted: '#777A72',
+          faint: '#9Ea19A',
         },
         crowd: {
           empty: '#10B981',       // Green
@@ -49,14 +49,16 @@ export default {
         sans: ['"DM Sans"', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
       },
       boxShadow: {
-        'soft': '0 4px 20px -2px rgba(36, 61, 50, 0.06), 0 2px 6px -1px rgba(36, 61, 50, 0.04)',
-        'card': '0 10px 30px -4px rgba(36, 61, 50, 0.08), 0 4px 10px -2px rgba(36, 61, 50, 0.03)',
-        'elevated': '0 20px 40px -6px rgba(36, 61, 50, 0.12), 0 8px 16px -4px rgba(36, 61, 50, 0.06)',
-        'inner-soft': 'inset 0 2px 4px 0 rgba(0, 0, 0, 0.04)',
+        'soft': '0 4px 20px -2px rgba(25, 29, 25, 0.04), 0 2px 6px -1px rgba(25, 29, 25, 0.03)',
+        'card': '0 12px 32px -4px rgba(25, 29, 25, 0.07), 0 4px 12px -2px rgba(25, 29, 25, 0.03)',
+        'elevated': '0 24px 48px -8px rgba(25, 29, 25, 0.12), 0 8px 20px -4px rgba(25, 29, 25, 0.05)',
+        'inner-soft': 'inset 0 2px 4px 0 rgba(0, 0, 0, 0.03)',
       },
       borderRadius: {
+        'xl': '1rem',
         '2xl': '1.25rem',
         '3xl': '1.75rem',
+        '4xl': '2.25rem',
       }
     },
   },

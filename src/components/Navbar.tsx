@@ -1,108 +1,108 @@
 import React from 'react';
-import { Map, Radio, QrCode, Compass } from 'lucide-react';
+import { Compass, Map, Radio, Sparkles } from 'lucide-react';
 
 export type ActiveTab = 'discover' | 'map' | 'live' | 'demo';
 
 interface NavbarProps {
   activeTab: ActiveTab;
   onTabChange: (tab: ActiveTab) => void;
-  reportCount: number;
+  reportCount?: number;
 }
 
 export const Navbar: React.FC<NavbarProps> = ({
   activeTab,
   onTabChange,
-  reportCount,
 }) => {
   return (
-    <header className="sticky top-0 z-40 bg-[#F7F3EB]/90 backdrop-blur-md border-b border-[#E2D9C5] transition-all">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-18 flex items-center justify-between">
-        {/* Brand Logo & Tagline */}
-        <div 
-          className="flex items-center gap-3 cursor-pointer select-none"
+    <header className="sticky top-0 z-40 bg-[#F7F3EB]/95 backdrop-blur-md border-b border-[#E2D9C5]/80 transition-all">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 h-[72px] flex items-center justify-between gap-4">
+        {/* Left: Compact HydVibe Logo + Wordmark */}
+        <button
           onClick={() => onTabChange('discover')}
+          className="flex items-center gap-2.5 shrink-0 group focus:outline-none text-left cursor-pointer"
+          aria-label="HydVibe Home"
         >
-          <div className="w-11 h-11 rounded-2xl bg-[#FAF7F0] border border-[#E2D9C5] shadow-xs flex items-center justify-center p-1 overflow-hidden group-hover:scale-105 transition-transform">
+          <div className="w-9 h-9 rounded-xl bg-white border border-[#E2D9C5] shadow-2xs flex items-center justify-center p-1 overflow-hidden group-hover:border-forest/40 transition-colors">
             <img
               src="/hydvibe-logo.png"
               alt="HydVibe"
               className="w-full h-full object-contain"
             />
           </div>
-          <div>
-            <div className="flex items-center gap-2">
-              <span className="font-serif font-black text-2xl tracking-tight text-forest">
-                HydVibe
-              </span>
-              <span className="text-[10px] uppercase font-bold tracking-widest px-2 py-0.5 rounded-full bg-forest text-[#F7F3EB]">
-                Hyderabad
-              </span>
-            </div>
-            <p className="text-[11px] text-charcoal-muted tracking-tight hidden sm:block">
-              Find your place. Catch the right vibe.
-            </p>
+          <div className="flex items-baseline gap-1.5">
+            <span className="font-serif text-2xl font-black tracking-tight text-forest">
+              HydVibe
+            </span>
+            <span className="text-[10px] font-sans font-bold tracking-widest uppercase text-caramel-dark opacity-90 hidden sm:inline">
+              Hyd
+            </span>
           </div>
-        </div>
+        </button>
 
-        {/* Desktop Navigation Links */}
-        <nav className="hidden md:flex items-center gap-1 bg-white/70 p-1.5 rounded-2xl border border-[#E2D9C5] shadow-xs">
+        {/* Center: Clean Primary Navigation (Max 1 row, no clutter) */}
+        <nav className="hidden md:flex items-center gap-1 lg:gap-2">
           <button
             onClick={() => onTabChange('discover')}
-            className={`px-4 py-2 rounded-xl text-xs font-semibold flex items-center gap-2 transition-all cursor-pointer ${
+            className={`px-3.5 py-2 rounded-xl text-xs lg:text-sm font-medium transition-all cursor-pointer flex items-center gap-1.5 ${
               activeTab === 'discover'
-                ? 'bg-forest text-white shadow-2xs'
-                : 'text-charcoal hover:bg-[#FAF7F0]'
+                ? 'text-forest font-semibold bg-white/80 shadow-2xs border border-[#E2D9C5]/60'
+                : 'text-charcoal hover:text-forest hover:bg-white/40'
             }`}
           >
-            <Compass className="w-3.5 h-3.5" />
-            Discover
+            <Compass className="w-3.5 h-3.5 opacity-70" />
+            <span>Discover</span>
           </button>
+
           <button
             onClick={() => onTabChange('map')}
-            className={`px-4 py-2 rounded-xl text-xs font-semibold flex items-center gap-2 transition-all cursor-pointer ${
+            className={`px-3.5 py-2 rounded-xl text-xs lg:text-sm font-medium transition-all cursor-pointer flex items-center gap-1.5 ${
               activeTab === 'map'
-                ? 'bg-forest text-white shadow-2xs'
-                : 'text-charcoal hover:bg-[#FAF7F0]'
+                ? 'text-forest font-semibold bg-white/80 shadow-2xs border border-[#E2D9C5]/60'
+                : 'text-charcoal hover:text-forest hover:bg-white/40'
             }`}
           >
-            <Map className="w-3.5 h-3.5" />
-            Interactive Map
+            <Map className="w-3.5 h-3.5 opacity-70" />
+            <span>Explore Map</span>
           </button>
+
           <button
             onClick={() => onTabChange('live')}
-            className={`px-4 py-2 rounded-xl text-xs font-semibold flex items-center gap-2 transition-all cursor-pointer ${
+            className={`px-3.5 py-2 rounded-xl text-xs lg:text-sm font-medium transition-all cursor-pointer flex items-center gap-1.5 ${
               activeTab === 'live'
-                ? 'bg-forest text-white shadow-2xs'
-                : 'text-charcoal hover:bg-[#FAF7F0]'
+                ? 'text-forest font-semibold bg-white/80 shadow-2xs border border-[#E2D9C5]/60'
+                : 'text-charcoal hover:text-forest hover:bg-white/40'
             }`}
           >
             <Radio className="w-3.5 h-3.5 text-emerald-600" />
-            Live Intel
-            <span className="px-1.5 py-0.2 rounded-full text-[10px] bg-emerald-100 text-emerald-800 font-bold">
-              {reportCount}
-            </span>
-          </button>
-          <button
-            onClick={() => onTabChange('demo')}
-            className={`px-4 py-2 rounded-xl text-xs font-semibold flex items-center gap-2 transition-all cursor-pointer ${
-              activeTab === 'demo'
-                ? 'bg-caramel-dark text-white shadow-2xs'
-                : 'text-caramel-dark hover:bg-caramel/10'
-            }`}
-          >
-            <QrCode className="w-3.5 h-3.5" />
-            Demo Mode
+            <span>Live Intelligence</span>
           </button>
         </nav>
 
-        {/* Realtime Live Indicator Badge */}
-        <div className="flex items-center gap-2">
-          <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-50 border border-emerald-200/90 text-emerald-900 text-xs font-medium">
+        {/* Right: Secondary Demo Action + Subtle Live Indicator */}
+        <div className="flex items-center gap-2.5 sm:gap-3.5 shrink-0">
+          {/* Distinct Demo Mode Action (Secondary style) */}
+          <button
+            onClick={() => onTabChange('demo')}
+            className={`px-3 py-1.5 rounded-full text-xs font-semibold border transition-all cursor-pointer flex items-center gap-1.5 ${
+              activeTab === 'demo'
+                ? 'bg-caramel-dark text-white border-caramel-dark shadow-2xs'
+                : 'bg-transparent border-[#D9A777]/60 text-caramel-dark hover:bg-caramel/10'
+            }`}
+          >
+            <Sparkles className="w-3 h-3" />
+            <span className="hidden sm:inline">Presentation</span> Demo
+          </button>
+
+          {/* Subtle Live Sync Indicator */}
+          <div 
+            className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-white/60 border border-[#E2D9C5]/70 text-[11px] font-medium text-charcoal select-none"
+            title="Real-time crowd intelligence synchronized"
+          >
             <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
             </span>
-            <span className="font-semibold text-[11px] hidden sm:inline">Live Syncing</span>
+            <span className="font-sans text-[11px] text-charcoal-muted hidden xs:inline">Live Sync</span>
           </div>
         </div>
       </div>
