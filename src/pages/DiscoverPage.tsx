@@ -113,9 +113,14 @@ export const DiscoverPage: React.FC<DiscoverPageProps> = ({
       {/* HERO SECTION */}
       <section className="relative pt-6 md:pt-12 pb-8 overflow-hidden">
         <div className="max-w-4xl mx-auto text-center px-4">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#E3E9DD] border border-sage-dark text-forest text-xs font-semibold mb-6 shadow-2xs">
-            <Sparkles className="w-3.5 h-3.5 text-caramel-dark" />
-            <span>AI Discovery & Live Crowd Intelligence for Hyderabad</span>
+          <div className="flex flex-col items-center justify-center mb-5">
+            <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-3xl bg-white border border-[#E2D9C5] shadow-card p-2 mb-3 flex items-center justify-center overflow-hidden hover:scale-105 transition-transform">
+              <img src="/hydvibe-logo.png" alt="HydVibe" className="w-full h-full object-contain" />
+            </div>
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#E3E9DD] border border-sage-dark text-forest text-xs font-semibold shadow-2xs">
+              <Sparkles className="w-3.5 h-3.5 text-caramel-dark" />
+              <span>AI Discovery & Live Crowd Intelligence for Hyderabad</span>
+            </div>
           </div>
 
           <h1 className="font-serif text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight text-forest leading-[1.15] mb-5 text-balance">

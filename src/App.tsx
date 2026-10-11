@@ -10,7 +10,7 @@ import { DemoPage } from './pages/DemoPage';
 import { VenueDetailModal } from './components/VenueDetailModal';
 import { CrowdReportModal } from './components/CrowdReportModal';
 import type { VenueWithLiveStatus } from './types';
-import { Sparkles, MapPin, Coffee, ShieldCheck, Heart } from 'lucide-react';
+import { Sparkles, MapPin, ShieldCheck, Heart } from 'lucide-react';
 
 const AppContent: React.FC = () => {
   const { venues, reports, totalReportCount } = useCrowd();
@@ -145,9 +145,9 @@ const AppContent: React.FC = () => {
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8 pb-10 border-b border-forest-light/60">
             {/* Column 1: Brand */}
             <div className="md:col-span-2">
-              <div className="flex items-center gap-2.5 mb-3">
-                <div className="w-8 h-8 rounded-xl bg-caramel text-forest flex items-center justify-center font-bold">
-                  <Coffee className="w-4 h-4" />
+              <div className="flex items-center gap-3 mb-3">
+                <div className="w-9 h-9 rounded-xl bg-[#FAF7F0] p-1 flex items-center justify-center overflow-hidden shadow-xs">
+                  <img src="/hydvibe-logo.png" alt="HydVibe" className="w-full h-full object-contain" />
                 </div>
                 <span className="font-serif font-black text-2xl text-white">HydVibe</span>
               </div>

@@ -22,13 +22,12 @@ export const Navbar: React.FC<NavbarProps> = ({
           className="flex items-center gap-3 cursor-pointer select-none"
           onClick={() => onTabChange('discover')}
         >
-          <div className="w-10 h-10 rounded-2xl bg-forest flex items-center justify-center shadow-xs border border-caramel/30 text-caramel-light">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none" className="w-6 h-6">
-              <circle cx="50" cy="50" r="34" stroke="#D9A777" strokeWidth="4" strokeOpacity="0.5"/>
-              <path d="M30 65V35C30 35 38 32 50 32C62 32 70 35 70 35V65C70 65 62 68 50 68C38 68 30 65 30 65Z" fill="#F7F3EB" fillOpacity="0.15" stroke="#D9A777" strokeWidth="3"/>
-              <path d="M38 52C42 46 47 46 51 52C55 58 60 58 64 52" stroke="#F7F3EB" strokeWidth="4" strokeLinecap="round"/>
-              <circle cx="70" cy="28" r="5" fill="#10B981"/>
-            </svg>
+          <div className="w-11 h-11 rounded-2xl bg-[#FAF7F0] border border-[#E2D9C5] shadow-xs flex items-center justify-center p-1 overflow-hidden group-hover:scale-105 transition-transform">
+            <img
+              src="/hydvibe-logo.png"
+              alt="HydVibe"
+              className="w-full h-full object-contain"
+            />
           </div>
           <div>
             <div className="flex items-center gap-2">

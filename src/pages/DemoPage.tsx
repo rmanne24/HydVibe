@@ -75,17 +75,22 @@ export const DemoPage: React.FC<DemoPageProps> = ({
             ? 'bg-[#1B2E26] border-[#325243]' 
             : 'bg-white border-[#E2D9C5]'
         }`}>
-          <div>
-            <div className="flex items-center gap-2 text-caramel text-xs font-bold uppercase tracking-wider mb-2">
-              <MonitorPlay className="w-4 h-4" />
-              Live Stage & Hackathon Mode
+          <div className="flex items-start gap-4">
+            <div className="w-14 h-14 rounded-2xl bg-[#FAF7F0] border border-[#E2D9C5] shadow-xs p-1 flex items-center justify-center shrink-0 overflow-hidden">
+              <img src="/hydvibe-logo.png" alt="HydVibe" className="w-full h-full object-contain" />
             </div>
-            <h1 className="font-serif text-3xl sm:text-4xl font-bold tracking-tight">
-              HydVibe Realtime Command Center
-            </h1>
-            <p className={`text-sm mt-1 max-w-2xl ${projectorHighContrast ? 'text-gray-300' : 'text-charcoal-muted'}`}>
-              Interactive crowd intelligence platform for Hyderabad. Scan the QR code with any mobile device to participate in the live crowd sync test.
-            </p>
+            <div>
+              <div className="flex items-center gap-2 text-caramel text-xs font-bold uppercase tracking-wider mb-1">
+                <MonitorPlay className="w-4 h-4" />
+                Live Stage & Hackathon Mode
+              </div>
+              <h1 className="font-serif text-3xl sm:text-4xl font-bold tracking-tight">
+                HydVibe Realtime Command Center
+              </h1>
+              <p className={`text-sm mt-1 max-w-2xl ${projectorHighContrast ? 'text-gray-300' : 'text-charcoal-muted'}`}>
+                Interactive crowd intelligence platform for Hyderabad. Scan the QR code with any mobile device to participate in the live crowd sync test.
+              </p>
+            </div>
           </div>
 
           <div className="flex items-center gap-3 shrink-0">
